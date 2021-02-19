@@ -28,13 +28,13 @@ set_reference <- function(m, um, type = '450k') {
 
   t1.red.index <- match(t1.red, probe)
   t1.red.signal <- c(m[t1.red.index], um[t1.red.index])
-  t1.red.model <- Mclust(t1.red.signal, G=2, verbose = F)
+  t1.red.model <- Mclust(na.omit(t1.red.signal), G=2, verbose = F)
   t1.red.ref.mean <- t1.red.model$parameters$mean
   t1.red.ref.sd <- sqrt(t1.red.model$parameters$variance$sigmasq)
 
   t1.green.index <- match(t1.green,probe)
   t1.green.signal <- c(m[t1.green.index],um[t1.green.index])
-  t1.green.model <- Mclust(t1.green.signal, G=2, verbose = F)
+  t1.green.model <- Mclust(na.omit(t1.green.signal), G=2, verbose = F)
   t1.green.ref.mean <- t1.green.model$parameters$mean
   t1.green.ref.sd <- sqrt(t1.green.model$parameters$variance$sigmasq)
 
